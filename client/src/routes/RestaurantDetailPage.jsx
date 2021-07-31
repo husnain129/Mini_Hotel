@@ -18,8 +18,7 @@ const RestaurantDetailPage = () => {
       });
     })();
   }, []);
-  console.log("name", name);
-  console.log("params", useParams());
+
   return (
     <div
       className="container"

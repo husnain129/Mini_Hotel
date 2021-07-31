@@ -28,7 +28,7 @@ const AddReview = ({ id }) => {
     setRating("Rating");
   };
   return (
-    <div className="my-2 " style={{ width: "100%" }}>
+    <div className="my-2 " style={{ width: "87%" }}>
       <form
         action=""
         style={{

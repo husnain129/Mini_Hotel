@@ -14,13 +14,6 @@ export const RestaurantsContextProvider = (props) => {
   const delRes = (id) => {
     setRestaurants(restaurants.filter((r) => r.id !== id));
   };
-  const avgRating = () => {
-    let avg = 0;
-    for (let i of reviews) {
-      avg += parseInt(i.rating);
-    }
-    return avg / reviews.length;
-  };
   return (
     <RestaurantsContext.Provider
       value={{
@@ -31,7 +24,6 @@ export const RestaurantsContextProvider = (props) => {
         reviews,
         setReviews,
         updateReviews,
-        avgRating,
       }}
     >
       {props.children}

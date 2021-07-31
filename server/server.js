@@ -12,7 +12,7 @@ app.use(cors())
 
 app.get("/api/v1/restaurants", async (req, res) => {
     try {
-        const results = await db.query("SELECT * FROM restaurants");
+        const results = await db.query("select * from restaurants left join (select restaurant_id,count(*),avg(rating) as avg_rating from reviews group by restaurant_id) reviews on restaurants.id = reviews.restaurant_id");
         res.status(200).json({
             status: "success",
             results: results.rows.length,

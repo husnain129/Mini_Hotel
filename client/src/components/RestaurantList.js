@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import StarRating from "../components/StarRating";
 import { RestaurantsContext } from "../context/RestaurantContext";
 import UseRestaurant from "../hooks/UseRestaurant";
 const RestaurantList = () => {
@@ -9,7 +10,9 @@ const RestaurantList = () => {
   const api = UseRestaurant();
   useEffect(() => {
     (async () => {
-      await api.getAll().then((data) => setRestaurants(data.restaurants));
+      await api.getAll().then((data) => {
+        setRestaurants(data.restaurants);
+      });
     })();
   }, []);
   const deleteRestaurant = (id) => {
@@ -51,7 +54,10 @@ const RestaurantList = () => {
                 </td>
                 <td>{res.location}</td>
                 <td>{"$".repeat(res.price_range)}</td>
-                <td>*****</td>
+                <td>
+                  <StarRating rating={res.avg_rating} />
+                </td>
+
                 <td>
                   <button
                     onClick={() => handleUpdate(res.id)}
