@@ -24,7 +24,6 @@ const RestaurantList = () => {
   const handleUpdate = (id) => {
     history.push(`/restaurant/${id}/update`);
   };
-  restaurants && console.log(restaurants);
   return (
     <div className="list-group mx-5">
       <table className="table table-hover table-dark">
@@ -42,7 +41,14 @@ const RestaurantList = () => {
           {restaurants &&
             restaurants.map((res, ind) => (
               <tr key={ind}>
-                <td>{res.name}</td>
+                <td
+                  style={{ cursor: "pointer" }}
+                  onClick={() =>
+                    history.push(`/restaurants/${res.id}/${res.name}`)
+                  }
+                >
+                  {res.name}
+                </td>
                 <td>{res.location}</td>
                 <td>{"$".repeat(res.price_range)}</td>
                 <td>*****</td>

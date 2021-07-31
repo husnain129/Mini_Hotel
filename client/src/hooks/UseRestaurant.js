@@ -21,6 +21,15 @@ function UseRestaurant() {
         return [];
       }
     },
+    getReviews: async (id) => {
+      try {
+        const data = await api.get(`/restaurants/${id}/reviews`);
+        return data;
+      } catch (error) {
+        console.log("error getProfile", error);
+        return [];
+      }
+    },
     deleteOne: async (id) => {
       try {
         const data = await api.delete(`/restaurants/${id}`);
@@ -33,6 +42,15 @@ function UseRestaurant() {
     addRestaurant: async (value) => {
       try {
         const data = await api.post("/restaurants", value);
+        return data.result;
+      } catch (error) {
+        console.log("error getProfile", error);
+        return [];
+      }
+    },
+    addReview: async (id, value) => {
+      try {
+        const data = await api.post(`/restaurants/${id}/review`, value);
         return data.result;
       } catch (error) {
         console.log("error getProfile", error);
