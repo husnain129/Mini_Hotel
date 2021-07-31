@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const UseApi = () => {
-  let baseUrl = "http://localhost:3001";
+  // let baseUrl = "http://localhost:3001";
   return {
     get: async (endPoint) => {
       try {
-        const { data } = await axios.get(`${baseUrl}/api/v1${endPoint}`);
+        const { data } = await axios.get(`/api/v1${endPoint}`);
         if (data.status === "success") return data;
       } catch (error) {
         console.log("err", error);
@@ -14,10 +14,7 @@ const UseApi = () => {
     },
     post: async (endPoint, value) => {
       try {
-        const { data } = await axios.post(
-          `${baseUrl}/api/v1${endPoint}`,
-          value
-        );
+        const { data } = await axios.post(`/api/v1${endPoint}`, value);
         return data;
       } catch (error) {
         console.log("err", error);
@@ -26,10 +23,7 @@ const UseApi = () => {
     },
     patch: async (endPoint, value) => {
       try {
-        const { data } = await axios.patch(
-          `${baseUrl}/api/v1${endPoint}`,
-          value
-        );
+        const { data } = await axios.patch(`/api/v1${endPoint}`, value);
         return data;
       } catch (error) {
         console.log("err", error);
@@ -38,7 +32,7 @@ const UseApi = () => {
     },
     delete: async (endPoint) => {
       try {
-        const { data } = await axios.delete(`${baseUrl}/api/v1${endPoint}`);
+        const { data } = await axios.delete(`/api/v1${endPoint}`);
         return data;
       } catch (error) {
         console.log("err", error);
