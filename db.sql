@@ -12,4 +12,4 @@ CREATE TABLE reviews(
     name VARCHAR(55) NOT NULL,
     review TEXT NOT NULL,
     rating INT NOT NULL check (rating >=1 and rating <=5)
-);
+);  

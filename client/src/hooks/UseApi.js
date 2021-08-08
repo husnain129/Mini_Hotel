@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const UseApi = () => {
-  // let baseUrl = "http://localhost:3001";
+  let baseUrl = `${window.location.origin}baseUrl`;
   return {
     get: async (endPoint) => {
       try {
-        const { data } = await axios.get(`/api/v1${endPoint}`);
+        const { data } = await axios.get(`${baseUrl}${endPoint}`);
         if (data.status === "success") return data;
       } catch (error) {
         console.log("err", error);
@@ -14,7 +14,7 @@ const UseApi = () => {
     },
     post: async (endPoint, value) => {
       try {
-        const { data } = await axios.post(`/api/v1${endPoint}`, value);
+        const { data } = await axios.post(`${baseUrl}${endPoint}`, value);
         return data;
       } catch (error) {
         console.log("err", error);
@@ -23,7 +23,7 @@ const UseApi = () => {
     },
     patch: async (endPoint, value) => {
       try {
-        const { data } = await axios.patch(`/api/v1${endPoint}`, value);
+        const { data } = await axios.patch(`${baseUrl}${endPoint}`, value);
         return data;
       } catch (error) {
         console.log("err", error);
@@ -32,7 +32,7 @@ const UseApi = () => {
     },
     delete: async (endPoint) => {
       try {
-        const { data } = await axios.delete(`/api/v1${endPoint}`);
+        const { data } = await axios.delete(`${baseUrl}${endPoint}`);
         return data;
       } catch (error) {
         console.log("err", error);
